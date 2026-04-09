@@ -48,7 +48,7 @@ export default function CityWeather({ city }: CityWeatherProps) {
   if (!data) return null;
 
   return (
-    <div>
+    <div className="flex flex-col h-full">
       <CurrentWeather data={data.current} cityName={city.name} />
       <p className="text-white/70 text-xs mt-4 mb-1 drop-shadow-sm">
         ← 过去两周 · 今天 · 未来两周 →（左右滑动查看）

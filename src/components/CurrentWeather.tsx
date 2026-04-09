@@ -118,11 +118,13 @@ export default function CurrentWeather({ data, cityName }: CurrentWeatherProps) 
 
   return (
     <div
-      className={`relative overflow-hidden rounded-2xl p-6 shadow-lg backdrop-blur-md ${weatherClass}`}
+      className={`relative rounded-2xl p-6 shadow-lg backdrop-blur-md ${weatherClass}`}
       style={{ background: theme.bg }}
     >
       {/* 天气动效背景层 */}
-      <WeatherEffect code={data.weatherCode} />
+      <div className="absolute inset-0 overflow-hidden rounded-2xl">
+        <WeatherEffect code={data.weatherCode} />
+      </div>
 
       {/* 内容层 */}
       <div className="relative z-10">

@@ -62,6 +62,6 @@ export function getWeatherTheme(code: number): WeatherTheme {
   // 阵雪
   if (code <= 86) return { bg: 'linear-gradient(135deg, rgba(147,197,232,0.75), rgba(182,215,239,0.7), rgba(209,232,245,0.7))', text: 'text-slate-800', sub: 'text-slate-600' };
   // 雷暴
-  if (code <= 99) return { bg: 'linear-gradient(135deg, rgba(30,27,75,0.85), rgba(49,46,129,0.8), rgba(76,29,149,0.8))', text: 'text-white', sub: 'text-white/70' };
+  if (code <= 99) return { bg: 'linear-gradient(135deg, rgba(30,27,75,0.65), rgba(49,46,129,0.6), rgba(76,29,149,0.6))', text: 'text-white', sub: 'text-white/70' };
   return { bg: 'linear-gradient(135deg, rgba(226,232,240,0.75), rgba(241,245,249,0.7))', text: 'text-slate-800', sub: 'text-slate-600' };
 }
