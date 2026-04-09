@@ -14,7 +14,7 @@ export default function WeekTabs({ activeTab, onTabChange }: WeekTabsProps) {
             : 'bg-white/60 text-slate-600 hover:bg-white/80'
         }`}
       >
-        未来一周
+        未来两周
       </button>
       <button
         onClick={() => onTabChange('history')}
@@ -24,7 +24,7 @@ export default function WeekTabs({ activeTab, onTabChange }: WeekTabsProps) {
             : 'bg-white/60 text-slate-600 hover:bg-white/80'
         }`}
       >
-        过去一周
+        过去两周
       </button>
     </div>
   );

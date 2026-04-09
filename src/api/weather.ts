@@ -16,8 +16,8 @@ export async function fetchWeather(city: CityConfig): Promise<WeatherData> {
       daily: 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max',
       current: 'temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m',
       timezone: 'Asia/Shanghai',
-      past_days: 7,
-      forecast_days: 8,
+      past_days: 14,
+      forecast_days: 16,
     },
   });
 

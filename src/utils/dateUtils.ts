@@ -22,8 +22,8 @@ export function formatDate(dateStr: string): { weekday: string; date: string } {
 }
 
 export function splitDailyData(daily: DayData[]): {
-  pastWeek: DayData[];
-  futureWeek: DayData[];
+  pastWeeks: DayData[];
+  futureWeeks: DayData[];
 } {
   const today = dayjs().format('YYYY-MM-DD');
   const todayIndex = daily.findIndex((d) => d.date === today);
@@ -31,13 +31,13 @@ export function splitDailyData(daily: DayData[]): {
   if (todayIndex === -1) {
     const mid = Math.floor(daily.length / 2);
     return {
-      pastWeek: daily.slice(0, mid),
-      futureWeek: daily.slice(mid),
+      pastWeeks: daily.slice(0, mid),
+      futureWeeks: daily.slice(mid),
     };
   }
 
   return {
-    pastWeek: daily.slice(Math.max(0, todayIndex - 7), todayIndex),
-    futureWeek: daily.slice(todayIndex, todayIndex + 8),
+    pastWeeks: daily.slice(Math.max(0, todayIndex - 14), todayIndex),
+    futureWeeks: daily.slice(todayIndex, todayIndex + 15),
   };
 }

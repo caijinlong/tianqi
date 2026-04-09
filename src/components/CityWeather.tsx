@@ -51,8 +51,8 @@ export default function CityWeather({ city }: CityWeatherProps) {
 
   if (!data) return null;
 
-  const { pastWeek, futureWeek } = splitDailyData(data.daily);
-  const displayDays = activeTab === 'forecast' ? futureWeek : pastWeek;
+  const { pastWeeks, futureWeeks } = splitDailyData(data.daily);
+  const displayDays = activeTab === 'forecast' ? futureWeeks : pastWeeks;
 
   return (
     <div>
