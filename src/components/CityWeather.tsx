@@ -27,13 +27,13 @@ export default function CityWeather({ city }: CityWeatherProps) {
 
   if (loading) {
     return (
-      <div className="bg-white/20 backdrop-blur-md rounded-2xl p-8 shadow-lg animate-pulse border border-white/30">
-        <div className="h-6 bg-white/30 rounded w-20 mb-4" />
-        <div className="h-16 bg-white/30 rounded mb-4" />
-        <div className="h-8 bg-white/30 rounded w-40 mb-4" />
+      <div className="bg-white/90 backdrop-blur-md rounded-2xl p-8 shadow-lg animate-pulse">
+        <div className="h-6 bg-slate-200 rounded w-20 mb-4" />
+        <div className="h-16 bg-slate-200 rounded mb-4" />
+        <div className="h-8 bg-slate-200 rounded w-40 mb-4" />
         <div className="flex gap-2">
           {Array.from({ length: 7 }).map((_, i) => (
-            <div key={i} className="h-32 w-20 bg-white/30 rounded-xl" />
+            <div key={i} className="h-32 w-20 bg-slate-200 rounded-xl" />
           ))}
         </div>
       </div>
