@@ -144,3 +144,138 @@ body {
     transform: translateX(calc(100vw + 300px));
   }
 }
+
+/* ===== 天气卡片背景动效 ===== */
+
+/* 晴天：太阳光晕旋转 */
+.weather-sunny .wx-sun {
+  position: absolute;
+  top: -30px;
+  right: -20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,200,0.9) 0%, rgba(255,200,50,0.4) 50%, transparent 70%);
+  animation: sun-pulse 3s ease-in-out infinite;
+}
+.weather-sunny .wx-ray {
+  position: absolute;
+  top: -10px;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: conic-gradient(from 0deg, transparent, rgba(255,255,200,0.3), transparent, rgba(255,255,200,0.3), transparent, rgba(255,255,200,0.3), transparent, rgba(255,255,200,0.3), transparent);
+  border-radius: 50%;
+  animation: sun-spin 12s linear infinite;
+}
+
+@keyframes sun-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+@keyframes sun-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 多云/阴天：卡片内飘动的小云 */
+.weather-cloudy .wx-cloud {
+  position: absolute;
+  background: rgba(255,255,255,0.25);
+  border-radius: 50px;
+  animation: cloud-drift linear infinite;
+}
+.weather-cloudy .wx-cloud:nth-child(1) {
+  width: 80px; height: 28px; top: 10px; left: -80px;
+  animation-duration: 18s;
+}
+.weather-cloudy .wx-cloud:nth-child(2) {
+  width: 60px; height: 22px; top: 50px; left: -60px;
+  animation-duration: 22s; animation-delay: 5s;
+  opacity: 0.6;
+}
+.weather-cloudy .wx-cloud:nth-child(3) {
+  width: 90px; height: 30px; bottom: 15px; left: -90px;
+  animation-duration: 25s; animation-delay: 10s;
+  opacity: 0.4;
+}
+
+@keyframes cloud-drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(100% + 200px)); }
+}
+
+/* 雾天：层叠雾气 */
+.weather-fog .wx-fog {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: fog-move ease-in-out infinite alternate;
+}
+.weather-fog .wx-fog:nth-child(1) {
+  top: 10%; animation-duration: 6s;
+}
+.weather-fog .wx-fog:nth-child(2) {
+  top: 40%; animation-duration: 8s; animation-delay: 2s; opacity: 0.5;
+}
+.weather-fog .wx-fog:nth-child(3) {
+  bottom: 5%; animation-duration: 7s; animation-delay: 4s; opacity: 0.3;
+}
+
+@keyframes fog-move {
+  from { transform: translateX(-20%); }
+  to { transform: translateX(20%); }
+}
+
+/* 雨天：下落的雨滴 */
+.weather-rain .wx-drop {
+  position: absolute;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.6));
+  border-radius: 0 0 2px 2px;
+  animation: rain-fall linear infinite;
+}
+
+@keyframes rain-fall {
+  from { transform: translateY(-20px); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(180px); opacity: 0; }
+}
+
+/* 雪天：飘落的雪花 */
+.weather-snow .wx-flake {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: snow-fall linear infinite;
+}
+
+@keyframes snow-fall {
+  from { transform: translateY(-10px) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.8; }
+  100% { transform: translateY(180px) rotate(360deg); opacity: 0; }
+}
+
+/* 雷暴：闪电闪烁 */
+.weather-thunder .wx-flash {
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.15);
+  animation: lightning 4s ease-in-out infinite;
+}
+
+@keyframes lightning {
+  0%, 100% { opacity: 0; }
+  4% { opacity: 1; }
+  6% { opacity: 0; }
+  8% { opacity: 0.6; }
+  10% { opacity: 0; }
+  45% { opacity: 0; }
+  47% { opacity: 0.8; }
+  49% { opacity: 0; }
+}

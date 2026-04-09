@@ -3,6 +3,12 @@ interface WeatherInfo {
   emoji: string;
 }
 
+export interface WeatherTheme {
+  bg: string;
+  text: string;
+  sub: string;
+}
+
 const weatherCodeMap: Record<number, WeatherInfo> = {
   0: { label: '晴', emoji: '☀️' },
   1: { label: '大部晴朗', emoji: '🌤️' },
@@ -36,4 +42,26 @@ const weatherCodeMap: Record<number, WeatherInfo> = {
 
 export function getWeatherInfo(code: number): WeatherInfo {
   return weatherCodeMap[code] ?? { label: '未知', emoji: '❓' };
+}
+
+export function getWeatherTheme(code: number): WeatherTheme {
+  // 晴天
+  if (code <= 1) return { bg: 'linear-gradient(135deg, #f59e0b, #f97316, #fb923c)', text: 'text-white', sub: 'text-white/80' };
+  // 多云/阴
+  if (code <= 3) return { bg: 'linear-gradient(135deg, #64748b, #94a3b8, #78909c)', text: 'text-white', sub: 'text-white/70' };
+  // 雾
+  if (code <= 48) return { bg: 'linear-gradient(135deg, #9ca3af, #b0bec5, #cfd8dc)', text: 'text-slate-800', sub: 'text-slate-600' };
+  // 毛毛雨/小雨
+  if (code <= 57) return { bg: 'linear-gradient(135deg, #5b86a6, #7ea8be, #a0c4d8)', text: 'text-white', sub: 'text-white/70' };
+  // 雨
+  if (code <= 67) return { bg: 'linear-gradient(135deg, #334155, #475569, #546e7a)', text: 'text-white', sub: 'text-white/70' };
+  // 雪
+  if (code <= 77) return { bg: 'linear-gradient(135deg, #bfdbfe, #e0e7ff, #dbeafe)', text: 'text-slate-800', sub: 'text-slate-600' };
+  // 阵雨
+  if (code <= 82) return { bg: 'linear-gradient(135deg, #3b6894, #4a7fad, #6b9ec4)', text: 'text-white', sub: 'text-white/70' };
+  // 阵雪
+  if (code <= 86) return { bg: 'linear-gradient(135deg, #93c5e8, #b6d7ef, #d1e8f5)', text: 'text-slate-800', sub: 'text-slate-600' };
+  // 雷暴
+  if (code <= 99) return { bg: 'linear-gradient(135deg, #1e1b4b, #312e81, #4c1d95)', text: 'text-white', sub: 'text-white/70' };
+  return { bg: 'linear-gradient(135deg, #e2e8f0, #f1f5f9)', text: 'text-slate-800', sub: 'text-slate-600' };
 }
