@@ -1,6 +1,6 @@
 import type { DayData } from '../types/weather';
 import DayCard from './DayCard';
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect } from 'react';
 import dayjs from 'dayjs';
 
 interface DayCardListProps {
@@ -10,32 +10,36 @@ interface DayCardListProps {
 export default function DayCardList({ days }: DayCardListProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const scrollToToday = useCallback(() => {
+  useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
 
-    const today = dayjs().format('YYYY-MM-DD');
-    const todayIndex = days.findIndex((d) => d.date === today);
-    if (todayIndex === -1) return;
+    const doScroll = () => {
+      const today = dayjs().format('YYYY-MM-DD');
+      const todayIndex = days.findIndex((d) => d.date === today);
+      if (todayIndex === -1) return;
 
-    const cards = container.children;
-    if (cards[todayIndex]) {
-      const card = cards[todayIndex] as HTMLElement;
-      const firstCard = cards[0] as HTMLElement;
-      const offset = firstCard ? firstCard.offsetWidth + 8 : 88;
-      container.scrollLeft = card.offsetLeft - offset;
-    }
-  }, [days]);
+      const cards = container.children;
+      if (cards[todayIndex]) {
+        const card = cards[todayIndex] as HTMLElement;
+        const firstCard = cards[0] as HTMLElement;
+        const offset = firstCard ? firstCard.offsetWidth + 8 : 88;
+        container.scrollLeft = card.offsetLeft - offset;
+      }
+    };
 
-  useEffect(() => {
-    // 多次尝试确保两个城市都能正确滚动
-    scrollToToday();
-    requestAnimationFrame(() => {
-      requestAnimationFrame(scrollToToday);
+    // ResizeObserver fires when container gets its final layout dimensions
+    const observer = new ResizeObserver(() => {
+      doScroll();
+      observer.disconnect();
     });
-    const timer = setTimeout(scrollToToday, 100);
-    return () => clearTimeout(timer);
-  }, [scrollToToday]);
+    observer.observe(container);
+
+    // Also try immediately as fallback
+    doScroll();
+
+    return () => observer.disconnect();
+  }, [days]);
 
   return (
     <div
