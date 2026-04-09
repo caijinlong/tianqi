@@ -42,7 +42,7 @@ export default function DayCardList({ days }: DayCardListProps) {
   return (
     <div
       ref={scrollRef}
-      className="flex gap-2 overflow-x-auto pb-3 mt-4"
+      className="relative flex gap-2 overflow-x-auto pb-3 mt-4"
       style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,255,255,0.4) transparent' }}
     >
       {days.map((day) => (
