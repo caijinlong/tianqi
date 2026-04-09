@@ -14,7 +14,7 @@ export default function DayCard({ day }: DayCardProps) {
 
   return (
     <div
-      className={`flex flex-col items-center gap-1 rounded-xl p-3 min-w-[80px] transition-all ${
+      className={`flex flex-col items-center gap-1 rounded-xl p-3 min-w-[80px] shrink-0 transition-all ${
         isToday
           ? 'bg-white shadow-lg ring-2 ring-sky-400 scale-105'
           : 'bg-white/80 backdrop-blur-sm hover:bg-white/90 shadow-sm'
