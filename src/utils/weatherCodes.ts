@@ -54,7 +54,7 @@ export function getWeatherTheme(code: number): WeatherTheme {
   // 毛毛雨/小雨
   if (code <= 57) return { bg: 'linear-gradient(135deg, #5b86a6, #7ea8be, #a0c4d8)', text: 'text-white', sub: 'text-white/70' };
   // 雨
-  if (code <= 67) return { bg: 'linear-gradient(135deg, #334155, #475569, #546e7a)', text: 'text-white', sub: 'text-white/70' };
+  if (code <= 67) return { bg: 'linear-gradient(135deg, #5b7d95, #7a9bb5, #8fafc5)', text: 'text-white', sub: 'text-white/80' };
   // 雪
   if (code <= 77) return { bg: 'linear-gradient(135deg, #bfdbfe, #e0e7ff, #dbeafe)', text: 'text-slate-800', sub: 'text-slate-600' };
   // 阵雨
