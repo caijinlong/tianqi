@@ -6,8 +6,15 @@ import { CITIES } from './api/weather';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-sky-100">
-      <div className="max-w-6xl mx-auto px-4">
+    <div className="sky-bg">
+      {/* 漂浮的云朵 */}
+      <div className="cloud cloud-1" />
+      <div className="cloud cloud-2" />
+      <div className="cloud cloud-3" />
+      <div className="cloud cloud-4" />
+      <div className="cloud cloud-5" />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4">
         <Header />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {CITIES.map((city) => (

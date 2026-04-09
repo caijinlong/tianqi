@@ -10,8 +10,8 @@ export default function WeekTabs({ activeTab, onTabChange }: WeekTabsProps) {
         onClick={() => onTabChange('forecast')}
         className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
           activeTab === 'forecast'
-            ? 'bg-blue-500 text-white shadow-sm'
-            : 'bg-white/60 text-slate-600 hover:bg-white/80'
+            ? 'bg-white text-sky-600 shadow-md'
+            : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
         }`}
       >
         未来一周
@@ -20,8 +20,8 @@ export default function WeekTabs({ activeTab, onTabChange }: WeekTabsProps) {
         onClick={() => onTabChange('history')}
         className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
           activeTab === 'history'
-            ? 'bg-blue-500 text-white shadow-sm'
-            : 'bg-white/60 text-slate-600 hover:bg-white/80'
+            ? 'bg-white text-sky-600 shadow-md'
+            : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
         }`}
       >
         过去一周
