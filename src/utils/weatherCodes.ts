@@ -46,22 +46,22 @@ export function getWeatherInfo(code: number): WeatherInfo {
 
 export function getWeatherTheme(code: number): WeatherTheme {
   // 晴天
-  if (code <= 1) return { bg: 'linear-gradient(135deg, #f59e0b, #f97316, #fb923c)', text: 'text-white', sub: 'text-white/80' };
+  if (code <= 1) return { bg: 'linear-gradient(135deg, rgba(245,158,11,0.85), rgba(249,115,22,0.85), rgba(251,146,60,0.8))', text: 'text-white', sub: 'text-white/80' };
   // 多云/阴
-  if (code <= 3) return { bg: 'linear-gradient(135deg, #64748b, #94a3b8, #78909c)', text: 'text-white', sub: 'text-white/70' };
+  if (code <= 3) return { bg: 'linear-gradient(135deg, rgba(100,116,139,0.8), rgba(148,163,184,0.75), rgba(120,144,156,0.75))', text: 'text-white', sub: 'text-white/70' };
   // 雾
-  if (code <= 48) return { bg: 'linear-gradient(135deg, #9ca3af, #b0bec5, #cfd8dc)', text: 'text-slate-800', sub: 'text-slate-600' };
+  if (code <= 48) return { bg: 'linear-gradient(135deg, rgba(156,163,175,0.75), rgba(176,190,197,0.7), rgba(207,216,220,0.7))', text: 'text-slate-800', sub: 'text-slate-600' };
   // 毛毛雨/小雨
-  if (code <= 57) return { bg: 'linear-gradient(135deg, #5b86a6, #7ea8be, #a0c4d8)', text: 'text-white', sub: 'text-white/70' };
+  if (code <= 57) return { bg: 'linear-gradient(135deg, rgba(91,134,166,0.8), rgba(126,168,190,0.75), rgba(160,196,216,0.75))', text: 'text-white', sub: 'text-white/70' };
   // 雨
-  if (code <= 67) return { bg: 'linear-gradient(135deg, #5b7d95, #7a9bb5, #8fafc5)', text: 'text-white', sub: 'text-white/80' };
+  if (code <= 67) return { bg: 'linear-gradient(135deg, rgba(91,125,149,0.8), rgba(122,155,181,0.75), rgba(143,175,197,0.75))', text: 'text-white', sub: 'text-white/80' };
   // 雪
-  if (code <= 77) return { bg: 'linear-gradient(135deg, #bfdbfe, #e0e7ff, #dbeafe)', text: 'text-slate-800', sub: 'text-slate-600' };
+  if (code <= 77) return { bg: 'linear-gradient(135deg, rgba(191,219,254,0.8), rgba(224,231,255,0.75), rgba(219,234,254,0.75))', text: 'text-slate-800', sub: 'text-slate-600' };
   // 阵雨
-  if (code <= 82) return { bg: 'linear-gradient(135deg, #3b6894, #4a7fad, #6b9ec4)', text: 'text-white', sub: 'text-white/70' };
+  if (code <= 82) return { bg: 'linear-gradient(135deg, rgba(59,104,148,0.8), rgba(74,127,173,0.75), rgba(107,158,196,0.75))', text: 'text-white', sub: 'text-white/70' };
   // 阵雪
-  if (code <= 86) return { bg: 'linear-gradient(135deg, #93c5e8, #b6d7ef, #d1e8f5)', text: 'text-slate-800', sub: 'text-slate-600' };
+  if (code <= 86) return { bg: 'linear-gradient(135deg, rgba(147,197,232,0.75), rgba(182,215,239,0.7), rgba(209,232,245,0.7))', text: 'text-slate-800', sub: 'text-slate-600' };
   // 雷暴
-  if (code <= 99) return { bg: 'linear-gradient(135deg, #1e1b4b, #312e81, #4c1d95)', text: 'text-white', sub: 'text-white/70' };
-  return { bg: 'linear-gradient(135deg, #e2e8f0, #f1f5f9)', text: 'text-slate-800', sub: 'text-slate-600' };
+  if (code <= 99) return { bg: 'linear-gradient(135deg, rgba(30,27,75,0.85), rgba(49,46,129,0.8), rgba(76,29,149,0.8))', text: 'text-white', sub: 'text-white/70' };
+  return { bg: 'linear-gradient(135deg, rgba(226,232,240,0.75), rgba(241,245,249,0.7))', text: 'text-slate-800', sub: 'text-slate-600' };
 }
