@@ -21,7 +21,10 @@ export default function DayCardList({ days }: DayCardListProps) {
     const cards = container.children;
     if (cards[todayIndex]) {
       const card = cards[todayIndex] as HTMLElement;
-      container.scrollLeft = card.offsetLeft - container.offsetWidth / 2 + card.offsetWidth / 2;
+      // 让今天的卡片出现在第二个位置（左边露出一张卡片的宽度）
+      const firstCard = cards[0] as HTMLElement;
+      const offset = firstCard ? firstCard.offsetWidth + 8 : 88; // 8 = gap-2
+      container.scrollLeft = card.offsetLeft - offset;
     }
   }, [days]);
 
