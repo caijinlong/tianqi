@@ -14,31 +14,29 @@ export default function DayCardList({ days }: DayCardListProps) {
     const container = scrollRef.current;
     if (!container) return;
 
+    let rafId: number;
+    let attempts = 0;
+
     const doScroll = () => {
       const today = dayjs().format('YYYY-MM-DD');
       const todayIndex = days.findIndex((d) => d.date === today);
-      if (todayIndex === -1) return;
+      if (todayIndex < 1) return;
 
-      const cards = container.children;
-      if (cards[todayIndex]) {
-        const card = cards[todayIndex] as HTMLElement;
-        const firstCard = cards[0] as HTMLElement;
-        const offset = firstCard ? firstCard.offsetWidth + 8 : 88;
-        container.scrollLeft = card.offsetLeft - offset;
+      const yesterdayCard = container.children[todayIndex - 1] as HTMLElement;
+      if (!yesterdayCard) return;
+
+      const target = yesterdayCard.offsetLeft;
+      container.scrollLeft = target;
+
+      // Verify scroll took effect; retry if container wasn't ready
+      if (Math.abs(container.scrollLeft - target) > 2 && attempts < 30) {
+        attempts++;
+        rafId = requestAnimationFrame(doScroll);
       }
     };
 
-    // ResizeObserver fires when container gets its final layout dimensions
-    const observer = new ResizeObserver(() => {
-      doScroll();
-      observer.disconnect();
-    });
-    observer.observe(container);
-
-    // Also try immediately as fallback
-    doScroll();
-
-    return () => observer.disconnect();
+    rafId = requestAnimationFrame(doScroll);
+    return () => cancelAnimationFrame(rafId);
   }, [days]);
 
   return (
